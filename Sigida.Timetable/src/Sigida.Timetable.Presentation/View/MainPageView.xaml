@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Sigida.Timetable.Presentation.View.MainPageView"
+    xmlns:viewmodel="clr-namespace:Sigida.Timetable.Presentation.ViewModel"
+    xmlns:model="clr-namespace:Sigida.Timetable.Presentation.Model"
+    xmlns:template="clr-namespace:Sigida.Timetable.Presentation.Resources.Styles.Templates"
+    xmlns:templateBet="clr-namespace:Sigida.Timetable.Presentation.Resources.Styles.Templates.Border"
+    xmlns:styles="clr-namespace:Sigida.Timetable.Presentation.View.Styles.Template"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="viewmodel:MainViewModel"
+    Title="{Binding Title}"
+    Shell.PresentationMode="Animated"
+    Style="{StaticResource MainPageStyle}">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding GetFacultyInfoCommand}"/>
+    </ContentPage.Behaviors>
+
+    <Grid>
+        <RefreshView
+            Command="{Binding GetFacultyInfoCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding Faculties}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:FacultyInfo">
+                        <template:FacultyCardTemplate/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+    </Grid>
+</ContentPage>

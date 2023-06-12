@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:template="clr-namespace:Sigida.Timetable.UI.Resources.Styles.Template.Card"
+             xmlns:entity="clr-namespace:Sigida.Timetable.Entities.Models;assembly=Sigida.Timetable.Entities"
+             xmlns:models="clr-namespace:Sigida.Timetable.UI.Models"
+             xmlns:viewmodel="clr-namespace:Sigida.Timetable.UI.ViewModel"
+             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Sigida.Timetable.UI.View.GroupPageView"
+             x:DataType="viewmodel:GroupViewModel"
+             Title="{Binding Title}"
+             Style="{StaticResource PageStyle}">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding PageInvokeCommand}"/>
+    </ContentPage.Behaviors>
+
+    <Grid
+        RowDefinitions="*,Auto"
+        ColumnSpacing="20">
+
+        <RefreshView
+        Command="{Binding GetCurrentGroupTimetableListCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding GroupTimetable}"
+                            SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <Label Text="Автор лентяй и не добавил курс или просто не просили"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CurrentTimetableGroup">
+                        <Grid Padding="2">
+                            <template:GroupCardTemplate/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <Border Grid.Row="1"
+                StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Gray1000}}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12, 12, 0,0"/>
+            </Border.StrokeShape>
+            <Label Style="{StaticResource Headline2Style}">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="DayOfWeek"/>
+                        <Binding Path="OnEven"/>
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+        </Border>
+    </Grid>
+</ContentPage>

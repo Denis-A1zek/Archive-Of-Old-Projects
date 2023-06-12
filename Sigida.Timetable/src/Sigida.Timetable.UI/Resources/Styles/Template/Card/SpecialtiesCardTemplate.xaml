@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Sigida.Timetable.UI.Models"
+             xmlns:entity="clr-namespace:Sigida.Timetable.Entities.Models;assembly=Sigida.Timetable.Entities"
+             xmlns:viewmodel="clr-namespace:Sigida.Timetable.UI.ViewModel"
+             x:DataType="entity:Specialty"
+             x:Class="Sigida.Timetable.UI.Resources.Styles.Template.Card.SpecialtiesCardTemplate">
+    <Frame Style="{StaticResource MainBorderStyle}">
+        <Grid RowDefinitions="*,Auto"
+              RowSpacing="8">
+            <Label 
+                Style="{StaticResource HeadlineStyle}"
+                Text="{Binding Name}"/>
+            <HorizontalStackLayout 
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                Spacing="10">
+                <Button  
+                        Style="{StaticResource CourseButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SpecialtiesViewModel}}, Path=GoToGroupPageCommand}"
+                        Text="1 Курс">
+                    <Button.CommandParameter>
+                        <MultiBinding StringFormat="{}{0}:{1}{2}">
+                            <Binding Path="Id"/>
+                            <Binding Path="Name"/>
+                            <Binding Source=":1"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+
+                <Button  
+                        Style="{StaticResource CourseButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SpecialtiesViewModel}}, Path=GoToGroupPageCommand}"
+                        Text="2 Курс">
+                    <Button.CommandParameter>
+                        <MultiBinding StringFormat="{}{0}:{1}{2}">
+                            <Binding Path="Id"/>
+                            <Binding Path="Name"/>
+                            <Binding Source=":2"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+
+                <Button  
+                        Style="{StaticResource CourseButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SpecialtiesViewModel}}, Path=GoToGroupPageCommand}"
+                        Text="3 Курс">
+                    <Button.CommandParameter>
+                        <MultiBinding StringFormat="{}{0}:{1}{2}">
+                            <Binding Path="Id"/>
+                            <Binding Path="Name"/>
+                            <Binding Source=":3"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+
+                <Button  
+                        Style="{StaticResource CourseButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SpecialtiesViewModel}}, Path=GoToGroupPageCommand}"
+                        Text="4 Курс">
+                    <Button.CommandParameter>
+                        <MultiBinding StringFormat="{}{0}:{1}{2}">
+                            <Binding Path="Id"/>
+                            <Binding Path="Name"/>
+                            <Binding Source=":4"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+
+            </HorizontalStackLayout>
+        </Grid>
+    </Frame>
+</ContentView>

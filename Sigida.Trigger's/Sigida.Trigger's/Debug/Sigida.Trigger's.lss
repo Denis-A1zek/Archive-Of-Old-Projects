@@ -1,0 +1,472 @@
+
+Sigida.Trigger's.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001b8  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000020c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000020c  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000023c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  0000027c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000006f2  00000000  00000000  000002a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000004f5  00000000  00000000  00000996  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000004ae  00000000  00000000  00000e8b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  0000133c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000032a  00000000  00000000  00001370  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001b0  00000000  00000000  0000169a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  0000184a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	17 c0       	rjmp	.+46     	; 0x32 <__bad_interrupt>
+   4:	16 c0       	rjmp	.+44     	; 0x32 <__bad_interrupt>
+   6:	15 c0       	rjmp	.+42     	; 0x32 <__bad_interrupt>
+   8:	14 c0       	rjmp	.+40     	; 0x32 <__bad_interrupt>
+   a:	13 c0       	rjmp	.+38     	; 0x32 <__bad_interrupt>
+   c:	12 c0       	rjmp	.+36     	; 0x32 <__bad_interrupt>
+   e:	11 c0       	rjmp	.+34     	; 0x32 <__bad_interrupt>
+  10:	10 c0       	rjmp	.+32     	; 0x32 <__bad_interrupt>
+  12:	0f c0       	rjmp	.+30     	; 0x32 <__bad_interrupt>
+  14:	0e c0       	rjmp	.+28     	; 0x32 <__bad_interrupt>
+  16:	0d c0       	rjmp	.+26     	; 0x32 <__bad_interrupt>
+  18:	0c c0       	rjmp	.+24     	; 0x32 <__bad_interrupt>
+  1a:	0b c0       	rjmp	.+22     	; 0x32 <__bad_interrupt>
+  1c:	0a c0       	rjmp	.+20     	; 0x32 <__bad_interrupt>
+  1e:	09 c0       	rjmp	.+18     	; 0x32 <__bad_interrupt>
+  20:	08 c0       	rjmp	.+16     	; 0x32 <__bad_interrupt>
+  22:	07 c0       	rjmp	.+14     	; 0x32 <__bad_interrupt>
+  24:	06 c0       	rjmp	.+12     	; 0x32 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf ed       	ldi	r28, 0xDF	; 223
+  2c:	cd bf       	out	0x3d, r28	; 61
+  2e:	30 d0       	rcall	.+96     	; 0x90 <main>
+  30:	c1 c0       	rjmp	.+386    	; 0x1b4 <_exit>
+
+00000032 <__bad_interrupt>:
+  32:	e6 cf       	rjmp	.-52     	; 0x0 <__vectors>
+
+00000034 <CheckButtonTriggres>:
+int CheckButtonTriggres ()
+{
+	//Если нажаты более двух кнопок выбора триггера, то выводим ошибку на выходные светодиоды
+	while ((RSTRIGGER) && (JKTRIGGER) || (TTRIGGER) && (DTRIGGER) || (JKTRIGGER) && (TTRIGGER) || (RSTRIGGER) && (DTRIGGER) || (DTRIGGER) && (JKTRIGGER))
+	{
+		PORTB=0xFF;
+  34:	8f ef       	ldi	r24, 0xFF	; 255
+// если выбрано более двух триггеров,
+// тогда мы показываем ошибку на светодиоде.
+int CheckButtonTriggres ()
+{
+	//Если нажаты более двух кнопок выбора триггера, то выводим ошибку на выходные светодиоды
+	while ((RSTRIGGER) && (JKTRIGGER) || (TTRIGGER) && (DTRIGGER) || (JKTRIGGER) && (TTRIGGER) || (RSTRIGGER) && (DTRIGGER) || (DTRIGGER) && (JKTRIGGER))
+  36:	15 c0       	rjmp	.+42     	; 0x62 <__SREG__+0x23>
+	{
+		PORTB=0xFF;
+  38:	88 bb       	out	0x18, r24	; 24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  3a:	eb e7       	ldi	r30, 0x7B	; 123
+  3c:	f2 e9       	ldi	r31, 0x92	; 146
+  3e:	31 97       	sbiw	r30, 0x01	; 1
+  40:	f1 f7       	brne	.-4      	; 0x3e <__SP_L__+0x1>
+  42:	00 c0       	rjmp	.+0      	; 0x44 <__SREG__+0x5>
+  44:	00 00       	nop
+		_delay_ms(150);
+		PORTB=0x00;
+  46:	18 ba       	out	0x18, r1	; 24
+  48:	eb e7       	ldi	r30, 0x7B	; 123
+  4a:	f2 e9       	ldi	r31, 0x92	; 146
+  4c:	31 97       	sbiw	r30, 0x01	; 1
+  4e:	f1 f7       	brne	.-4      	; 0x4c <__SREG__+0xd>
+  50:	00 c0       	rjmp	.+0      	; 0x52 <__SREG__+0x13>
+  52:	00 00       	nop
+		_delay_ms(150);
+		PORTB=0xFF;
+  54:	88 bb       	out	0x18, r24	; 24
+  56:	eb e7       	ldi	r30, 0x7B	; 123
+  58:	f2 e9       	ldi	r31, 0x92	; 146
+  5a:	31 97       	sbiw	r30, 0x01	; 1
+  5c:	f1 f7       	brne	.-4      	; 0x5a <__SREG__+0x1b>
+  5e:	00 c0       	rjmp	.+0      	; 0x60 <__SREG__+0x21>
+  60:	00 00       	nop
+// если выбрано более двух триггеров,
+// тогда мы показываем ошибку на светодиоде.
+int CheckButtonTriggres ()
+{
+	//Если нажаты более двух кнопок выбора триггера, то выводим ошибку на выходные светодиоды
+	while ((RSTRIGGER) && (JKTRIGGER) || (TTRIGGER) && (DTRIGGER) || (JKTRIGGER) && (TTRIGGER) || (RSTRIGGER) && (DTRIGGER) || (DTRIGGER) && (JKTRIGGER))
+  62:	80 99       	sbic	0x10, 0	; 16
+  64:	02 c0       	rjmp	.+4      	; 0x6a <__SREG__+0x2b>
+  66:	81 9b       	sbis	0x10, 1	; 16
+  68:	e7 cf       	rjmp	.-50     	; 0x38 <CheckButtonTriggres+0x4>
+  6a:	83 99       	sbic	0x10, 3	; 16
+  6c:	02 c0       	rjmp	.+4      	; 0x72 <__SREG__+0x33>
+  6e:	82 9b       	sbis	0x10, 2	; 16
+  70:	e3 cf       	rjmp	.-58     	; 0x38 <CheckButtonTriggres+0x4>
+  72:	81 99       	sbic	0x10, 1	; 16
+  74:	02 c0       	rjmp	.+4      	; 0x7a <__SREG__+0x3b>
+  76:	83 9b       	sbis	0x10, 3	; 16
+  78:	df cf       	rjmp	.-66     	; 0x38 <CheckButtonTriggres+0x4>
+  7a:	80 99       	sbic	0x10, 0	; 16
+  7c:	02 c0       	rjmp	.+4      	; 0x82 <__SREG__+0x43>
+  7e:	82 9b       	sbis	0x10, 2	; 16
+  80:	db cf       	rjmp	.-74     	; 0x38 <CheckButtonTriggres+0x4>
+  82:	82 99       	sbic	0x10, 2	; 16
+  84:	02 c0       	rjmp	.+4      	; 0x8a <__SREG__+0x4b>
+  86:	81 9b       	sbis	0x10, 1	; 16
+  88:	d7 cf       	rjmp	.-82     	; 0x38 <CheckButtonTriggres+0x4>
+		_delay_ms(150);
+	}
+	
+	//Если все хорошо, возвращаем 0 
+	return 0;
+}
+  8a:	80 e0       	ldi	r24, 0x00	; 0
+  8c:	90 e0       	ldi	r25, 0x00	; 0
+  8e:	08 95       	ret
+
+00000090 <main>:
+
+//Основной код программы 
+int main(void)
+{
+	//Конфигурация портов I/O
+    PORTB=0x00;
+  90:	18 ba       	out	0x18, r1	; 24
+    DDRB=0xFF;
+  92:	8f ef       	ldi	r24, 0xFF	; 255
+  94:	87 bb       	out	0x17, r24	; 23
+	PORTD=0xFF;
+  96:	82 bb       	out	0x12, r24	; 18
+	DDRD=0x00;
+  98:	11 ba       	out	0x11, r1	; 17
+				{
+					PORTB=0x02;
+				}
+				else if (!FIRST_BUTTON && SECOND_BUTTON)     
+				{
+					PORTB=0x01;
+  9a:	c1 e0       	ldi	r28, 0x01	; 1
+				{
+					PORTB=0x03;
+				}
+				else if (FIRST_BUTTON && !SECOND_BUTTON)          
+				{
+					PORTB=0x02;
+  9c:	d2 e0       	ldi	r29, 0x02	; 2
+				//Проверка кнопок выбора триггера
+				CheckButtonTriggres();
+				
+				if (!FIRST_BUTTON && !SECOND_BUTTON)                 
+				{
+					PORTB=0x03;
+  9e:	13 e0       	ldi	r17, 0x03	; 3
+	DDRD=0x00;
+
+    while (1) 
+    {
+		//Если кнопка RS нажата, то мы выполняем бесконечный цикл опроса двух кнопок
+		if (RSTRIGGER)
+  a0:	80 9b       	sbis	0x10, 0	; 16
+  a2:	1c c0       	rjmp	.+56     	; 0xdc <main+0x4c>
+  a4:	1e c0       	rjmp	.+60     	; 0xe2 <__stack+0x3>
+		{
+			while (RSTRIGGER)
+			{
+				//Проверка кнопок выбора триггера
+				CheckButtonTriggres();
+  a6:	c6 df       	rcall	.-116    	; 0x34 <CheckButtonTriggres>
+				
+				if (!FIRST_BUTTON && !SECOND_BUTTON)                 
+  a8:	84 9b       	sbis	0x10, 4	; 16
+  aa:	04 c0       	rjmp	.+8      	; 0xb4 <main+0x24>
+  ac:	85 9b       	sbis	0x10, 5	; 16
+  ae:	02 c0       	rjmp	.+4      	; 0xb4 <main+0x24>
+				{
+					PORTB=0x03;
+  b0:	18 bb       	out	0x18, r17	; 24
+  b2:	14 c0       	rjmp	.+40     	; 0xdc <main+0x4c>
+				}
+				else if (FIRST_BUTTON && !SECOND_BUTTON)          
+  b4:	84 99       	sbic	0x10, 4	; 16
+  b6:	04 c0       	rjmp	.+8      	; 0xc0 <main+0x30>
+  b8:	85 9b       	sbis	0x10, 5	; 16
+  ba:	02 c0       	rjmp	.+4      	; 0xc0 <main+0x30>
+				{
+					PORTB=0x02;
+  bc:	d8 bb       	out	0x18, r29	; 24
+  be:	0e c0       	rjmp	.+28     	; 0xdc <main+0x4c>
+				}
+				else if (!FIRST_BUTTON && SECOND_BUTTON)     
+  c0:	84 9b       	sbis	0x10, 4	; 16
+  c2:	04 c0       	rjmp	.+8      	; 0xcc <main+0x3c>
+  c4:	85 99       	sbic	0x10, 5	; 16
+  c6:	02 c0       	rjmp	.+4      	; 0xcc <main+0x3c>
+				{
+					PORTB=0x01;
+  c8:	c8 bb       	out	0x18, r28	; 24
+  ca:	08 c0       	rjmp	.+16     	; 0xdc <main+0x4c>
+				}
+				else if (FIRST_BUTTON && SECOND_BUTTON)  
+  cc:	84 99       	sbic	0x10, 4	; 16
+  ce:	05 c0       	rjmp	.+10     	; 0xda <main+0x4a>
+  d0:	85 99       	sbic	0x10, 5	; 16
+  d2:	03 c0       	rjmp	.+6      	; 0xda <main+0x4a>
+				{
+					PORTB=PINB;
+  d4:	86 b3       	in	r24, 0x16	; 22
+  d6:	88 bb       	out	0x18, r24	; 24
+  d8:	01 c0       	rjmp	.+2      	; 0xdc <main+0x4c>
+				}
+				else PORTB=0x00;					  
+  da:	18 ba       	out	0x18, r1	; 24
+    while (1) 
+    {
+		//Если кнопка RS нажата, то мы выполняем бесконечный цикл опроса двух кнопок
+		if (RSTRIGGER)
+		{
+			while (RSTRIGGER)
+  dc:	80 9b       	sbis	0x10, 0	; 16
+  de:	e3 cf       	rjmp	.-58     	; 0xa6 <main+0x16>
+  e0:	df cf       	rjmp	.-66     	; 0xa0 <main+0x10>
+				}
+				else PORTB=0x00;					  
+			}
+		}
+		//Если кнопка JK нажата, то мы выполняем бесконечный цикл опроса двух кнопок
+		else if (JKTRIGGER) 
+  e2:	81 9b       	sbis	0x10, 1	; 16
+  e4:	30 c0       	rjmp	.+96     	; 0x146 <__stack+0x67>
+  e6:	32 c0       	rjmp	.+100    	; 0x14c <__stack+0x6d>
+		{
+			
+			while (JKTRIGGER)
+			{
+				//Проверка кнопок выбора триггера
+				CheckButtonTriggres();
+  e8:	a5 df       	rcall	.-182    	; 0x34 <CheckButtonTriggres>
+				
+				if (!FIRST_BUTTON && !SECOND_BUTTON)
+  ea:	84 9b       	sbis	0x10, 4	; 16
+  ec:	18 c0       	rjmp	.+48     	; 0x11e <__stack+0x3f>
+  ee:	85 9b       	sbis	0x10, 5	; 16
+  f0:	16 c0       	rjmp	.+44     	; 0x11e <__stack+0x3f>
+				{
+					PORTB=0x01;
+  f2:	c8 bb       	out	0x18, r28	; 24
+  f4:	83 e2       	ldi	r24, 0x23	; 35
+  f6:	94 ef       	ldi	r25, 0xF4	; 244
+  f8:	01 97       	sbiw	r24, 0x01	; 1
+  fa:	f1 f7       	brne	.-4      	; 0xf8 <__stack+0x19>
+  fc:	00 c0       	rjmp	.+0      	; 0xfe <__stack+0x1f>
+  fe:	00 00       	nop
+					_delay_ms(250);
+					PORTB=0x02;
+ 100:	d8 bb       	out	0x18, r29	; 24
+ 102:	83 e2       	ldi	r24, 0x23	; 35
+ 104:	94 ef       	ldi	r25, 0xF4	; 244
+ 106:	01 97       	sbiw	r24, 0x01	; 1
+ 108:	f1 f7       	brne	.-4      	; 0x106 <__stack+0x27>
+ 10a:	00 c0       	rjmp	.+0      	; 0x10c <__stack+0x2d>
+ 10c:	00 00       	nop
+					_delay_ms(250);
+					PORTB=0x01;
+ 10e:	c8 bb       	out	0x18, r28	; 24
+ 110:	83 e2       	ldi	r24, 0x23	; 35
+ 112:	94 ef       	ldi	r25, 0xF4	; 244
+ 114:	01 97       	sbiw	r24, 0x01	; 1
+ 116:	f1 f7       	brne	.-4      	; 0x114 <__stack+0x35>
+ 118:	00 c0       	rjmp	.+0      	; 0x11a <__stack+0x3b>
+ 11a:	00 00       	nop
+ 11c:	14 c0       	rjmp	.+40     	; 0x146 <__stack+0x67>
+					_delay_ms(250);
+				}
+				else if (FIRST_BUTTON && !SECOND_BUTTON)
+ 11e:	84 99       	sbic	0x10, 4	; 16
+ 120:	04 c0       	rjmp	.+8      	; 0x12a <__stack+0x4b>
+ 122:	85 9b       	sbis	0x10, 5	; 16
+ 124:	02 c0       	rjmp	.+4      	; 0x12a <__stack+0x4b>
+				{
+					PORTB=0x02;
+ 126:	d8 bb       	out	0x18, r29	; 24
+ 128:	0e c0       	rjmp	.+28     	; 0x146 <__stack+0x67>
+				}
+				else if (!FIRST_BUTTON && SECOND_BUTTON)
+ 12a:	84 9b       	sbis	0x10, 4	; 16
+ 12c:	04 c0       	rjmp	.+8      	; 0x136 <__stack+0x57>
+ 12e:	85 99       	sbic	0x10, 5	; 16
+ 130:	02 c0       	rjmp	.+4      	; 0x136 <__stack+0x57>
+				{
+					PORTB=0x01;
+ 132:	c8 bb       	out	0x18, r28	; 24
+ 134:	08 c0       	rjmp	.+16     	; 0x146 <__stack+0x67>
+				}
+				else if (FIRST_BUTTON && SECOND_BUTTON)
+ 136:	84 99       	sbic	0x10, 4	; 16
+ 138:	05 c0       	rjmp	.+10     	; 0x144 <__stack+0x65>
+ 13a:	85 99       	sbic	0x10, 5	; 16
+ 13c:	03 c0       	rjmp	.+6      	; 0x144 <__stack+0x65>
+				{
+					PORTB=PINB;
+ 13e:	86 b3       	in	r24, 0x16	; 22
+ 140:	88 bb       	out	0x18, r24	; 24
+ 142:	01 c0       	rjmp	.+2      	; 0x146 <__stack+0x67>
+				}
+				else PORTB=0x00;
+ 144:	18 ba       	out	0x18, r1	; 24
+		}
+		//Если кнопка JK нажата, то мы выполняем бесконечный цикл опроса двух кнопок
+		else if (JKTRIGGER) 
+		{
+			
+			while (JKTRIGGER)
+ 146:	81 9b       	sbis	0x10, 1	; 16
+ 148:	cf cf       	rjmp	.-98     	; 0xe8 <__stack+0x9>
+ 14a:	aa cf       	rjmp	.-172    	; 0xa0 <main+0x10>
+				}
+				else PORTB=0x00;
+			}
+		}
+		//Если кнопка D нажата, то мы выполняем бесконечный цикл опроса двух кнопок
+		else if (DTRIGGER) 
+ 14c:	82 9b       	sbis	0x10, 2	; 16
+ 14e:	1d c0       	rjmp	.+58     	; 0x18a <__stack+0xab>
+ 150:	1f c0       	rjmp	.+62     	; 0x190 <__stack+0xb1>
+		{
+			while (DTRIGGER)
+			{
+				//Проверка кнопок выбора триггера
+				CheckButtonTriggres();
+ 152:	70 df       	rcall	.-288    	; 0x34 <CheckButtonTriggres>
+				
+				if (!FIRST_BUTTON && !SECOND_BUTTON)
+ 154:	84 9b       	sbis	0x10, 4	; 16
+ 156:	05 c0       	rjmp	.+10     	; 0x162 <__stack+0x83>
+ 158:	85 9b       	sbis	0x10, 5	; 16
+ 15a:	03 c0       	rjmp	.+6      	; 0x162 <__stack+0x83>
+				{
+					PORTB=PINB;
+ 15c:	86 b3       	in	r24, 0x16	; 22
+ 15e:	88 bb       	out	0x18, r24	; 24
+ 160:	14 c0       	rjmp	.+40     	; 0x18a <__stack+0xab>
+				}
+				else if (FIRST_BUTTON && !SECOND_BUTTON)
+ 162:	84 99       	sbic	0x10, 4	; 16
+ 164:	05 c0       	rjmp	.+10     	; 0x170 <__stack+0x91>
+ 166:	85 9b       	sbis	0x10, 5	; 16
+ 168:	03 c0       	rjmp	.+6      	; 0x170 <__stack+0x91>
+				{
+					PORTB=PINB;
+ 16a:	86 b3       	in	r24, 0x16	; 22
+ 16c:	88 bb       	out	0x18, r24	; 24
+ 16e:	0d c0       	rjmp	.+26     	; 0x18a <__stack+0xab>
+				}
+				else if (!FIRST_BUTTON && SECOND_BUTTON)
+ 170:	84 9b       	sbis	0x10, 4	; 16
+ 172:	04 c0       	rjmp	.+8      	; 0x17c <__stack+0x9d>
+ 174:	85 99       	sbic	0x10, 5	; 16
+ 176:	02 c0       	rjmp	.+4      	; 0x17c <__stack+0x9d>
+				{
+					PORTB=0x01;
+ 178:	c8 bb       	out	0x18, r28	; 24
+ 17a:	07 c0       	rjmp	.+14     	; 0x18a <__stack+0xab>
+				}
+				else if (FIRST_BUTTON && SECOND_BUTTON)
+ 17c:	84 99       	sbic	0x10, 4	; 16
+ 17e:	04 c0       	rjmp	.+8      	; 0x188 <__stack+0xa9>
+ 180:	85 99       	sbic	0x10, 5	; 16
+ 182:	02 c0       	rjmp	.+4      	; 0x188 <__stack+0xa9>
+				{
+					PORTB=0x00;
+ 184:	18 ba       	out	0x18, r1	; 24
+ 186:	01 c0       	rjmp	.+2      	; 0x18a <__stack+0xab>
+				}
+				else PORTB=0x00;
+ 188:	18 ba       	out	0x18, r1	; 24
+			}
+		}
+		//Если кнопка D нажата, то мы выполняем бесконечный цикл опроса двух кнопок
+		else if (DTRIGGER) 
+		{
+			while (DTRIGGER)
+ 18a:	82 9b       	sbis	0x10, 2	; 16
+ 18c:	e2 cf       	rjmp	.-60     	; 0x152 <__stack+0x73>
+ 18e:	88 cf       	rjmp	.-240    	; 0xa0 <main+0x10>
+				}
+				else PORTB=0x00;
+			}
+		}
+		//Если кнопка T нажата, то мы выполняем бесконечный цикл опроса двух кнопок
+		else if (TTRIGGER) 
+ 190:	83 9b       	sbis	0x10, 3	; 16
+ 192:	0b c0       	rjmp	.+22     	; 0x1aa <__stack+0xcb>
+ 194:	0d c0       	rjmp	.+26     	; 0x1b0 <__stack+0xd1>
+		{
+			while (TTRIGGER)
+			{
+				//Проверка кнопок выбора триггера
+				CheckButtonTriggres();
+ 196:	4e df       	rcall	.-356    	; 0x34 <CheckButtonTriggres>
+				
+				if (!FIRST_BUTTON)
+ 198:	84 9b       	sbis	0x10, 4	; 16
+ 19a:	02 c0       	rjmp	.+4      	; 0x1a0 <__stack+0xc1>
+				{
+					PORTB=0x01;
+ 19c:	c8 bb       	out	0x18, r28	; 24
+ 19e:	05 c0       	rjmp	.+10     	; 0x1aa <__stack+0xcb>
+				}
+				else if (FIRST_BUTTON)
+ 1a0:	84 99       	sbic	0x10, 4	; 16
+ 1a2:	02 c0       	rjmp	.+4      	; 0x1a8 <__stack+0xc9>
+				{
+					PORTB=0x02;
+ 1a4:	d8 bb       	out	0x18, r29	; 24
+ 1a6:	01 c0       	rjmp	.+2      	; 0x1aa <__stack+0xcb>
+				}
+				else PORTB=0x00;
+ 1a8:	18 ba       	out	0x18, r1	; 24
+			}
+		}
+		//Если кнопка T нажата, то мы выполняем бесконечный цикл опроса двух кнопок
+		else if (TTRIGGER) 
+		{
+			while (TTRIGGER)
+ 1aa:	83 9b       	sbis	0x10, 3	; 16
+ 1ac:	f4 cf       	rjmp	.-24     	; 0x196 <__stack+0xb7>
+ 1ae:	78 cf       	rjmp	.-272    	; 0xa0 <main+0x10>
+				{
+					PORTB=0x02;
+				}
+				else PORTB=0x00;
+			}
+		}else PORTB = 0x00; //Пока не выбран один из триггеров, светодиоды не горят.
+ 1b0:	18 ba       	out	0x18, r1	; 24
+ 1b2:	76 cf       	rjmp	.-276    	; 0xa0 <main+0x10>
+
+000001b4 <_exit>:
+ 1b4:	f8 94       	cli
+
+000001b6 <__stop_program>:
+ 1b6:	ff cf       	rjmp	.-2      	; 0x1b6 <__stop_program>

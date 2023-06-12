@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Sigida.Timetable.Presentation.ViewModel"
+             xmlns:model="clr-namespace:Sigida.Timetable.Presentation.Model"
+             xmlns:template="clr-namespace:Sigida.Timetable.Presentation.View.Styles.Template"
+             xmlns:styles="clr-namespace:Sigida.Timetable.Presentation.View.Styles.Template"
+             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:GroupsViewModel"
+             x:Class="Sigida.Timetable.Presentation.View.GroupsPageView"
+             Title="{Binding Title}"
+             Style="{StaticResource PageStyle}">
+    
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding PageInvokeCommand}"/>
+    </ContentPage.Behaviors>
+
+    <Grid 
+        RowDefinitions="*,Auto">
+        <RefreshView
+            Command="{Binding GetCurrentGroupTimetableListCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding GroupTimetable}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:CurrentTimetableGroup">
+                        <template:GroupCardView/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"/>
+    </Grid>
+    
+</ContentPage>

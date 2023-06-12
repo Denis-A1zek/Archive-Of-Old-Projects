@@ -1,0 +1,20 @@
+﻿<Application x:Class="Objective.Publisher.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModel="clr-namespace:Objective.Publisher.WPF.MVVM.ViewModel"
+             xmlns:view="clr-namespace:Objective.Publisher.WPF.MVVM.View"
+             xmlns:local="clr-namespace:Objective.Publisher.WPF"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MainButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:WallPublisherViewModel}">
+                <view:WallPublisher/>
+            </DataTemplate>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

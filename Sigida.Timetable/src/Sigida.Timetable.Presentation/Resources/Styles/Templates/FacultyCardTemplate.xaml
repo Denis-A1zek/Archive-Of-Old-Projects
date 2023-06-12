@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sigida.Timetable.Presentation.Resources.Styles.Templates.FacultyCardTemplate"
+             xmlns:model="clr-namespace:Sigida.Timetable.Presentation.Model"
+             xmlns:viewmodel="clr-namespace:Sigida.Timetable.Presentation.ViewModel"
+             x:DataType="model:FacultyInfo">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonCourseStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Nunito"/>
+            </Style>
+            <Style x:Key="GridStyle" TargetType="Grid">
+                
+            </Style> 
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Frame Style="{StaticResource MainFrameStyle}">
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=GoToSpecialityPageCommand}"
+                                                      CommandParameter="{Binding .}"/>
+        </Frame.GestureRecognizers>
+        <Grid RowDefinitions="*, *"
+              Style="{StaticResource GridStyle}">
+            <StackLayout>
+                <Label 
+                Style="{StaticResource NameText}"
+                Text="{Binding Name}"/>
+                <Frame Style="{StaticResource SubframeStyle}">
+                    <CollectionView 
+                Grid.Row="1"
+                ItemsSource="{Binding Specialties}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Label 
+                                Style="{StaticResource Subtext}"
+                                Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </Frame>
+    
+</ContentView>

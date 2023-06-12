@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sigida.Timetable.App\Sigida.Timetable.App.csproj" />
+    <ProjectReference Include="..\Sigida.Timetable.Entities\Sigida.Timetable.Entities.csproj" />
+    <ProjectReference Include="..\Sigida.Timetable.Infrastructures\Sigida.Timetable.Infrastructures.csproj" />
+  </ItemGroup>
+
+</Project>

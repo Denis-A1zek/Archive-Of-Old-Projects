@@ -1,0 +1,15 @@
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\Sigida.ConsoleServer.csproj.AssemblyReference.cache
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\Sigida.ConsoleServer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\Sigida.ConsoleServer.AssemblyInfoInputs.cache
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\Sigida.ConsoleServer.AssemblyInfo.cs
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\Sigida.ConsoleServer.csproj.CoreCompileInputs.cache
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\bin\Debug\net6.0\Sigida.ConsoleServer.exe
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\bin\Debug\net6.0\Sigida.ConsoleServer.deps.json
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\bin\Debug\net6.0\Sigida.ConsoleServer.runtimeconfig.json
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\bin\Debug\net6.0\Sigida.ConsoleServer.dll
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\bin\Debug\net6.0\Sigida.ConsoleServer.pdb
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\Sigida.ConsoleServer.dll
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\refint\Sigida.ConsoleServer.dll
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\Sigida.ConsoleServer.pdb
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\Sigida.ConsoleServer.genruntimeconfig.cache
+D:\Microsoft Visual Studio\repos\Sigida.MultiTaskClient-Server\Sigida.ConsoleServer\obj\Debug\net6.0\ref\Sigida.ConsoleServer.dll

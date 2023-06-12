@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Sigida.Timetable.Presentation.Model"
+             xmlns:viewmodel="clr-namespace:Sigida.Timetable.Presentation.ViewModel"
+             xmlns:appmodel="clr-namespace:Sigida.Timetable.Entities.Models;assembly=Sigida.Timetable.Entities"
+             xmlns:converter="clr-namespace:Sigida.Timetable.Presentation.Converter"
+             xmlns:template="clr-namespace:Sigida.Timetable.Presentation.View.Styles.Template"
+             x:Class="Sigida.Timetable.Presentation.View.Styles.Template.GroupCardView"
+             x:DataType="model:CurrentTimetableGroup">
+    
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converter:ListWeekdayToCurrentDayConverter x:Key="CurrentDayConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    
+    <Frame Style="{StaticResource MainFrameStyle}">
+        <Grid RowDefinitions="20, Auto">
+            <HorizontalStackLayout>
+                <Label 
+                Style="{StaticResource NameText}"
+                Text="{Binding GroupName}"/>
+                <Label 
+                Style="{StaticResource NameText}"
+                Text="{Binding DayOfWeek}"
+                    Padding="200,0,0,0"/>
+            </HorizontalStackLayout>
+            <Frame Style="{StaticResource SubframeStyle}">
+                <CollectionView 
+                        Grid.Row="1"
+                        ItemsSource="{Binding LessonsDetails}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:LessonDetails">
+                            <template:TimetableCardTamplate/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+        </Grid>
+    </Frame>
+</ContentView>

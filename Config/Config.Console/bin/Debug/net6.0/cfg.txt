@@ -1,0 +1,13 @@
+ShowHints=True;
+ShowSteamWalletBalance=True;
+SendTelegramMessage=True;
+TelegramToken=132141411;
+PercentToSendNotifications=241;
+TimeToUpdate=4;
+CurrencyName=RUB;
+LanguageName=Ukr;
+ThemeName=Dark;
+UseClipboard=True;
+SaveHistory=True;
+SaveMarketDate=True;
+Message=Hello world;

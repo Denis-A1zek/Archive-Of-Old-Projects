@@ -1,0 +1,62 @@
+﻿<Window x:Class="Objective.Publisher.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:Objective.Publisher.WPF.MVVM.ViewModel"
+        xmlns:local="clr-namespace:Objective.Publisher.WPF"
+        mc:Ignorable="d"
+        Title="Publisher" Height="811" Width="1221" ResizeMode="CanResize"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#272537"
+            CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <DockPanel>
+                <Label Margin="10,0,0,0" Content="Objective Publisher"
+                       Foreground="White"/>
+            </DockPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Grid.Row="1">
+                    <RadioButton Content="Wall post"
+                                 FontSize="14"
+                                 Height="40"
+                                 Foreground="White"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding WallPublisherCommand}"/>
+                </StackPanel>
+
+            </Grid>
+            
+            <ContentControl Grid.Column="1" Grid.Row="1"
+                        Margin="10"
+                        Content="{Binding CurrentView}">
+
+            </ContentControl>
+
+        </Grid>
+    </Border>
+</Window>

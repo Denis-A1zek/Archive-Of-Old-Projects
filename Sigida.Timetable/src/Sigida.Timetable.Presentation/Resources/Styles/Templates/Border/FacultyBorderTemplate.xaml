@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Sigida.Timetable.Presentation.Model"
+             xmlns:viewmodel="clr-namespace:Sigida.Timetable.Presentation.ViewModel"
+             x:DataType="model:FacultyInfo"
+             x:Class="Sigida.Timetable.Presentation.Resources.Styles.Templates.Border.FacultyBorderTemplate">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BorderStyle" TargetType="Border">
+                <Setter Property="StrokeThickness" Value="0"/>
+            </Style>
+
+            <Style x:Key="SubBorderStyle" TargetType="Border">
+                <Setter Property="Margin" Value="20,40,20,10"/>
+                <Setter Property="Background" Value="{StaticResource PrimaryDarkBrush}"/>
+                <Setter Property="StrokeThickness" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Border Style="{StaticResource MainFrameStyle}">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="12"/>
+        </Border.StrokeShape>
+
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=GoToSpecialityPageCommand}"
+                                                      CommandParameter="{Binding .}"/>
+        </Border.GestureRecognizers>
+        <Grid RowDefinitions="*, Auto">
+
+            <Border Style="{StaticResource SubBorderStyle}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12"/>
+                </Border.StrokeShape>
+                <CollectionView 
+                Grid.Row="1"
+                ItemsSource="{Binding Specialties}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label 
+                                Style="{StaticResource Subtext}"
+                                Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+        </Grid>
+    </Border>
+</ContentView>

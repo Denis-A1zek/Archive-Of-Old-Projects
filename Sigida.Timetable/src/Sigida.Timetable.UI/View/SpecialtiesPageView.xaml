@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sigida.Timetable.UI.View.SpecialtiesPageView"
+             xmlns:entity="clr-namespace:Sigida.Timetable.Entities.Models;assembly=Sigida.Timetable.Entities"
+             xmlns:viewmodel="clr-namespace:Sigida.Timetable.UI.ViewModel"
+             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:template="clr-namespace:Sigida.Timetable.UI.Resources.Styles.Template.Card"
+             x:DataType="viewmodel:SpecialtiesViewModel"
+             Title="{Binding Title}"
+             Style="{StaticResource PageStyle}">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding PageInitCommand}"/>
+    </ContentPage.Behaviors>
+
+    <Grid
+        RowDefinitions="*,20"
+        ColumnSpacing="20">
+        <CollectionView ItemsSource="{Binding Faculty.Specialties}"
+                            SelectionMode="None">
+            <CollectionView.Ite>
+                <DataTemplate x:DataType="entity:Specialty">
+                    <Grid Padding="2">
+                        <template:SpecialtiesCardTemplate/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.Ite mTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
