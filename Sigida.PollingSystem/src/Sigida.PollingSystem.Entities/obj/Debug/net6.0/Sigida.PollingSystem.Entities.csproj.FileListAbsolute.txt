@@ -1,0 +1,12 @@
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\bin\Debug\net6.0\Sigida.PollingSystem.Entities.deps.json
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\bin\Debug\net6.0\Sigida.PollingSystem.Entities.dll
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\bin\Debug\net6.0\Sigida.PollingSystem.Entities.pdb
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\Sigida.PollingSystem.Entities.csproj.AssemblyReference.cache
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\Sigida.PollingSystem.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\Sigida.PollingSystem.Entities.AssemblyInfoInputs.cache
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\Sigida.PollingSystem.Entities.AssemblyInfo.cs
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\Sigida.PollingSystem.Entities.csproj.CoreCompileInputs.cache
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\Sigida.PollingSystem.Entities.dll
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\refint\Sigida.PollingSystem.Entities.dll
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\Sigida.PollingSystem.Entities.pdb
+D:\Microsoft Visual Studio\repos\Sigida.PollingSystem\src\Sigida.PollingSystem.Entities\obj\Debug\net6.0\ref\Sigida.PollingSystem.Entities.dll

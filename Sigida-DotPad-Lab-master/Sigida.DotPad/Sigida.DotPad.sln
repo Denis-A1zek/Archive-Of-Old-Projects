@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotPad.View", "DotPad.View\DotPad.View.csproj", "{A67F40C6-7126-46A3-B715-6F0C29ABA09C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A67F40C6-7126-46A3-B715-6F0C29ABA09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A67F40C6-7126-46A3-B715-6F0C29ABA09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A67F40C6-7126-46A3-B715-6F0C29ABA09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A67F40C6-7126-46A3-B715-6F0C29ABA09C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEF7EE10-4D4E-409E-B899-AC69F0D0A0BD}
+	EndGlobalSection
+EndGlobal

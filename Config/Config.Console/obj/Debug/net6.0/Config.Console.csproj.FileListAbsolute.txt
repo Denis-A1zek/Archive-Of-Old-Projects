@@ -1,0 +1,15 @@
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\bin\Debug\net6.0\Config.Console.exe
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\bin\Debug\net6.0\Config.Console.deps.json
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\bin\Debug\net6.0\Config.Console.runtimeconfig.json
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\bin\Debug\net6.0\Config.Console.dll
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\bin\Debug\net6.0\Config.Console.pdb
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\Config.Console.csproj.AssemblyReference.cache
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\Config.Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\Config.Console.AssemblyInfoInputs.cache
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\Config.Console.AssemblyInfo.cs
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\Config.Console.csproj.CoreCompileInputs.cache
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\Config.Console.dll
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\refint\Config.Console.dll
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\Config.Console.pdb
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\Config.Console.genruntimeconfig.cache
+C:\Users\Denis Sigida\source\repos\Config\Config.Console\obj\Debug\net6.0\ref\Config.Console.dll

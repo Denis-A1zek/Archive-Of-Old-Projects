@@ -1,0 +1,353 @@
+
+LizaLogick.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001de  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000232  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000232  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000264  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000070  00000000  00000000  000002a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000792  00000000  00000000  00000310  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000543  00000000  00000000  00000aa2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000042e  00000000  00000000  00000fe5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000a8  00000000  00000000  00001414  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000358  00000000  00000000  000014bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000214  00000000  00000000  00001814  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000050  00000000  00000000  00001a28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	48 d0       	rcall	.+144    	; 0xc4 <main>
+  34:	d2 c0       	rjmp	.+420    	; 0x1da <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <LogicElementAND>:
+}
+
+_Bool LogicElementNOT (_Bool firstInput)
+{
+	return !firstInput;
+}
+  38:	88 23       	and	r24, r24
+  3a:	21 f0       	breq	.+8      	; 0x44 <__SREG__+0x5>
+  3c:	61 11       	cpse	r22, r1
+  3e:	04 c0       	rjmp	.+8      	; 0x48 <__SREG__+0x9>
+  40:	80 e0       	ldi	r24, 0x00	; 0
+  42:	08 95       	ret
+  44:	80 e0       	ldi	r24, 0x00	; 0
+  46:	08 95       	ret
+  48:	81 e0       	ldi	r24, 0x01	; 1
+  4a:	08 95       	ret
+
+0000004c <LogicElementOR>:
+  4c:	81 11       	cpse	r24, r1
+  4e:	04 c0       	rjmp	.+8      	; 0x58 <LogicElementOR+0xc>
+  50:	66 23       	and	r22, r22
+  52:	21 f0       	breq	.+8      	; 0x5c <LogicElementOR+0x10>
+  54:	81 e0       	ldi	r24, 0x01	; 1
+  56:	08 95       	ret
+  58:	81 e0       	ldi	r24, 0x01	; 1
+  5a:	08 95       	ret
+  5c:	80 e0       	ldi	r24, 0x00	; 0
+  5e:	08 95       	ret
+
+00000060 <LogicElementNAND>:
+
+_Bool LogicElementNAND (_Bool firstInput, _Bool secondInput)
+{
+	return !(firstInput && secondInput);
+  60:	88 23       	and	r24, r24
+  62:	21 f0       	breq	.+8      	; 0x6c <LogicElementNAND+0xc>
+  64:	61 11       	cpse	r22, r1
+  66:	04 c0       	rjmp	.+8      	; 0x70 <LogicElementNAND+0x10>
+  68:	81 e0       	ldi	r24, 0x01	; 1
+  6a:	08 95       	ret
+  6c:	81 e0       	ldi	r24, 0x01	; 1
+  6e:	08 95       	ret
+  70:	80 e0       	ldi	r24, 0x00	; 0
+}
+  72:	08 95       	ret
+
+00000074 <LogicElementNOR>:
+
+_Bool LogicElementNOR (_Bool firstInput, _Bool secondInput)
+{
+	return !(firstInput || secondInput);
+  74:	81 11       	cpse	r24, r1
+  76:	03 c0       	rjmp	.+6      	; 0x7e <LogicElementNOR+0xa>
+  78:	66 23       	and	r22, r22
+  7a:	19 f0       	breq	.+6      	; 0x82 <LogicElementNOR+0xe>
+  7c:	08 95       	ret
+  7e:	80 e0       	ldi	r24, 0x00	; 0
+  80:	08 95       	ret
+  82:	81 e0       	ldi	r24, 0x01	; 1
+}
+  84:	08 95       	ret
+
+00000086 <LogicElementXOR>:
+
+_Bool LogicElementXOR (_Bool firstInput, _Bool secondInput)
+{
+	return ((!firstInput && secondInput)||(!secondInput && firstInput));
+  86:	81 11       	cpse	r24, r1
+  88:	02 c0       	rjmp	.+4      	; 0x8e <LogicElementXOR+0x8>
+  8a:	61 11       	cpse	r22, r1
+  8c:	05 c0       	rjmp	.+10     	; 0x98 <LogicElementXOR+0x12>
+  8e:	61 11       	cpse	r22, r1
+  90:	05 c0       	rjmp	.+10     	; 0x9c <LogicElementXOR+0x16>
+  92:	81 11       	cpse	r24, r1
+  94:	05 c0       	rjmp	.+10     	; 0xa0 <LogicElementXOR+0x1a>
+  96:	08 95       	ret
+  98:	81 e0       	ldi	r24, 0x01	; 1
+  9a:	08 95       	ret
+  9c:	80 e0       	ldi	r24, 0x00	; 0
+  9e:	08 95       	ret
+  a0:	81 e0       	ldi	r24, 0x01	; 1
+}
+  a2:	08 95       	ret
+
+000000a4 <LogicElementXNOR>:
+
+_Bool LogicElementXNOR (_Bool firstInput, _Bool secondInput)
+{
+	return (firstInput || !secondInput) && (!firstInput || secondInput);
+  a4:	81 11       	cpse	r24, r1
+  a6:	02 c0       	rjmp	.+4      	; 0xac <LogicElementXNOR+0x8>
+  a8:	61 11       	cpse	r22, r1
+  aa:	06 c0       	rjmp	.+12     	; 0xb8 <LogicElementXNOR+0x14>
+  ac:	88 23       	and	r24, r24
+  ae:	31 f0       	breq	.+12     	; 0xbc <LogicElementXNOR+0x18>
+  b0:	61 11       	cpse	r22, r1
+  b2:	06 c0       	rjmp	.+12     	; 0xc0 <LogicElementXNOR+0x1c>
+  b4:	80 e0       	ldi	r24, 0x00	; 0
+  b6:	08 95       	ret
+  b8:	80 e0       	ldi	r24, 0x00	; 0
+  ba:	08 95       	ret
+  bc:	81 e0       	ldi	r24, 0x01	; 1
+  be:	08 95       	ret
+  c0:	81 e0       	ldi	r24, 0x01	; 1
+  c2:	08 95       	ret
+
+000000c4 <main>:
+
+
+int main(void)
+{
+	
+	PORTC=0x00;
+  c4:	15 ba       	out	0x15, r1	; 21
+	DDRC=0xFF;
+  c6:	8f ef       	ldi	r24, 0xFF	; 255
+  c8:	84 bb       	out	0x14, r24	; 20
+	PORTB=0xFF;
+  ca:	88 bb       	out	0x18, r24	; 24
+	DDRB=0x00;
+  cc:	17 ba       	out	0x17, r1	; 23
+	PORTD=0xFF;
+  ce:	82 bb       	out	0x12, r24	; 18
+	DDRD=0x00;
+  d0:	11 ba       	out	0x11, r1	; 17
+	
+    /* Replace with your application code */
+    while (1) 
+    {
+		if (AND)
+  d2:	84 99       	sbic	0x10, 4	; 16
+  d4:	0f c0       	rjmp	.+30     	; 0xf4 <main+0x30>
+  d6:	85 99       	sbic	0x10, 5	; 16
+  d8:	0d c0       	rjmp	.+26     	; 0xf4 <main+0x30>
+  da:	86 9b       	sbis	0x10, 6	; 16
+  dc:	0b c0       	rjmp	.+22     	; 0xf4 <main+0x30>
+		{
+			PORTC = LogicElementAND(AND_ONE_BUTTON, AND_TWO_BUTTON);
+  de:	60 b3       	in	r22, 0x10	; 16
+  e0:	90 b3       	in	r25, 0x10	; 16
+  e2:	66 95       	lsr	r22
+  e4:	81 e0       	ldi	r24, 0x01	; 1
+  e6:	68 27       	eor	r22, r24
+  e8:	61 70       	andi	r22, 0x01	; 1
+  ea:	89 27       	eor	r24, r25
+  ec:	81 70       	andi	r24, 0x01	; 1
+  ee:	a4 df       	rcall	.-184    	; 0x38 <LogicElementAND>
+  f0:	85 bb       	out	0x15, r24	; 21
+  f2:	ef cf       	rjmp	.-34     	; 0xd2 <main+0xe>
+		}else if (OR)
+  f4:	84 99       	sbic	0x10, 4	; 16
+  f6:	14 c0       	rjmp	.+40     	; 0x120 <main+0x5c>
+  f8:	85 9b       	sbis	0x10, 5	; 16
+  fa:	12 c0       	rjmp	.+36     	; 0x120 <main+0x5c>
+  fc:	86 99       	sbic	0x10, 6	; 16
+  fe:	10 c0       	rjmp	.+32     	; 0x120 <main+0x5c>
+		{
+			PORTC = (LogicElementOR(OR_ONE_BUTTON, OR_TWO_BUTTON) << 1);
+ 100:	60 b3       	in	r22, 0x10	; 16
+ 102:	80 b3       	in	r24, 0x10	; 16
+ 104:	66 95       	lsr	r22
+ 106:	66 95       	lsr	r22
+ 108:	66 95       	lsr	r22
+ 10a:	91 e0       	ldi	r25, 0x01	; 1
+ 10c:	69 27       	eor	r22, r25
+ 10e:	61 70       	andi	r22, 0x01	; 1
+ 110:	86 95       	lsr	r24
+ 112:	86 95       	lsr	r24
+ 114:	89 27       	eor	r24, r25
+ 116:	81 70       	andi	r24, 0x01	; 1
+ 118:	99 df       	rcall	.-206    	; 0x4c <LogicElementOR>
+ 11a:	88 0f       	add	r24, r24
+ 11c:	85 bb       	out	0x15, r24	; 21
+ 11e:	d9 cf       	rjmp	.-78     	; 0xd2 <main+0xe>
+		}else if (NAND)
+ 120:	84 99       	sbic	0x10, 4	; 16
+ 122:	11 c0       	rjmp	.+34     	; 0x146 <main+0x82>
+ 124:	85 9b       	sbis	0x10, 5	; 16
+ 126:	0f c0       	rjmp	.+30     	; 0x146 <main+0x82>
+ 128:	86 9b       	sbis	0x10, 6	; 16
+ 12a:	0d c0       	rjmp	.+26     	; 0x146 <main+0x82>
+		{
+			PORTC = (LogicElementNAND(NAND_ONE_BUTTON,NAND_TWO_BUTTON) << 2);
+ 12c:	66 b3       	in	r22, 0x16	; 22
+ 12e:	96 b3       	in	r25, 0x16	; 22
+ 130:	66 95       	lsr	r22
+ 132:	81 e0       	ldi	r24, 0x01	; 1
+ 134:	68 27       	eor	r22, r24
+ 136:	61 70       	andi	r22, 0x01	; 1
+ 138:	89 27       	eor	r24, r25
+ 13a:	81 70       	andi	r24, 0x01	; 1
+ 13c:	91 df       	rcall	.-222    	; 0x60 <LogicElementNAND>
+ 13e:	88 0f       	add	r24, r24
+ 140:	88 0f       	add	r24, r24
+ 142:	85 bb       	out	0x15, r24	; 21
+ 144:	c6 cf       	rjmp	.-116    	; 0xd2 <main+0xe>
+		}else if (NOR)
+ 146:	84 9b       	sbis	0x10, 4	; 16
+ 148:	16 c0       	rjmp	.+44     	; 0x176 <main+0xb2>
+ 14a:	85 99       	sbic	0x10, 5	; 16
+ 14c:	14 c0       	rjmp	.+40     	; 0x176 <main+0xb2>
+ 14e:	86 99       	sbic	0x10, 6	; 16
+ 150:	12 c0       	rjmp	.+36     	; 0x176 <main+0xb2>
+		{
+			PORTC = (LogicElementNOR(NOR_ONE_BUTTON, NOR_TWO_BUTTON) << 3);
+ 152:	66 b3       	in	r22, 0x16	; 22
+ 154:	86 b3       	in	r24, 0x16	; 22
+ 156:	66 95       	lsr	r22
+ 158:	66 95       	lsr	r22
+ 15a:	66 95       	lsr	r22
+ 15c:	91 e0       	ldi	r25, 0x01	; 1
+ 15e:	69 27       	eor	r22, r25
+ 160:	61 70       	andi	r22, 0x01	; 1
+ 162:	86 95       	lsr	r24
+ 164:	86 95       	lsr	r24
+ 166:	89 27       	eor	r24, r25
+ 168:	81 70       	andi	r24, 0x01	; 1
+ 16a:	84 df       	rcall	.-248    	; 0x74 <LogicElementNOR>
+ 16c:	88 0f       	add	r24, r24
+ 16e:	88 0f       	add	r24, r24
+ 170:	88 0f       	add	r24, r24
+ 172:	85 bb       	out	0x15, r24	; 21
+ 174:	ae cf       	rjmp	.-164    	; 0xd2 <main+0xe>
+		}else if (XOR)
+ 176:	84 9b       	sbis	0x10, 4	; 16
+ 178:	15 c0       	rjmp	.+42     	; 0x1a4 <main+0xe0>
+ 17a:	85 99       	sbic	0x10, 5	; 16
+ 17c:	13 c0       	rjmp	.+38     	; 0x1a4 <main+0xe0>
+ 17e:	86 9b       	sbis	0x10, 6	; 16
+ 180:	11 c0       	rjmp	.+34     	; 0x1a4 <main+0xe0>
+		{
+			PORTC = (LogicElementXOR(XOR_ONE_BUTTON,XOR_TWO_BUTTON) << 4);
+ 182:	66 b3       	in	r22, 0x16	; 22
+ 184:	86 b3       	in	r24, 0x16	; 22
+ 186:	62 95       	swap	r22
+ 188:	66 95       	lsr	r22
+ 18a:	67 70       	andi	r22, 0x07	; 7
+ 18c:	91 e0       	ldi	r25, 0x01	; 1
+ 18e:	69 27       	eor	r22, r25
+ 190:	61 70       	andi	r22, 0x01	; 1
+ 192:	82 95       	swap	r24
+ 194:	8f 70       	andi	r24, 0x0F	; 15
+ 196:	89 27       	eor	r24, r25
+ 198:	81 70       	andi	r24, 0x01	; 1
+ 19a:	75 df       	rcall	.-278    	; 0x86 <LogicElementXOR>
+ 19c:	82 95       	swap	r24
+ 19e:	80 7f       	andi	r24, 0xF0	; 240
+ 1a0:	85 bb       	out	0x15, r24	; 21
+ 1a2:	97 cf       	rjmp	.-210    	; 0xd2 <main+0xe>
+		}else if (XNOR)
+ 1a4:	84 9b       	sbis	0x10, 4	; 16
+ 1a6:	17 c0       	rjmp	.+46     	; 0x1d6 <main+0x112>
+ 1a8:	85 9b       	sbis	0x10, 5	; 16
+ 1aa:	15 c0       	rjmp	.+42     	; 0x1d6 <main+0x112>
+ 1ac:	86 99       	sbic	0x10, 6	; 16
+ 1ae:	13 c0       	rjmp	.+38     	; 0x1d6 <main+0x112>
+		{
+			PORTC = (LogicElementXNOR(XNOR_ONE_BUTTON, XNOR_TWO_BUTTON) << 5);
+ 1b0:	66 b3       	in	r22, 0x16	; 22
+ 1b2:	86 b3       	in	r24, 0x16	; 22
+ 1b4:	60 95       	com	r22
+ 1b6:	66 1f       	adc	r22, r22
+ 1b8:	66 27       	eor	r22, r22
+ 1ba:	66 1f       	adc	r22, r22
+ 1bc:	82 95       	swap	r24
+ 1be:	86 95       	lsr	r24
+ 1c0:	86 95       	lsr	r24
+ 1c2:	83 70       	andi	r24, 0x03	; 3
+ 1c4:	91 e0       	ldi	r25, 0x01	; 1
+ 1c6:	89 27       	eor	r24, r25
+ 1c8:	81 70       	andi	r24, 0x01	; 1
+ 1ca:	6c df       	rcall	.-296    	; 0xa4 <LogicElementXNOR>
+ 1cc:	82 95       	swap	r24
+ 1ce:	88 0f       	add	r24, r24
+ 1d0:	80 7e       	andi	r24, 0xE0	; 224
+ 1d2:	85 bb       	out	0x15, r24	; 21
+ 1d4:	7e cf       	rjmp	.-260    	; 0xd2 <main+0xe>
+		}else PORTC = 0x00;
+ 1d6:	15 ba       	out	0x15, r1	; 21
+ 1d8:	7c cf       	rjmp	.-264    	; 0xd2 <main+0xe>
+
+000001da <_exit>:
+ 1da:	f8 94       	cli
+
+000001dc <__stop_program>:
+ 1dc:	ff cf       	rjmp	.-2      	; 0x1dc <__stop_program>
